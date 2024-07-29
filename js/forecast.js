@@ -1,23 +1,3 @@
-class WeatherForecast {
-
-	date;
-
-	temperatureC;
-
-	temperatureF;
-
-	summary;
-
-	liveData;
-
-	location;
-
-	constructor() {
-	}
-
-}
-
-
 let ForecastArray;
 let d = new Date();
 
@@ -36,8 +16,8 @@ async function GetForecast() {
 
 		let json_forecast = await response.json();
 		for (let i = 0; i < json_forecast.length; i++)
-			myStr = myStr + json_forecast[i]["location"];
-		document.body.innerHTML = myStr;
+			myStr = myStr + json_forecast[i].location;
+		document.getElementById("test1").innerHTML = myStr;
 		//document.body.innerHTML = JSON.stringify(json_forecast);
 		// console.log(json);
 	} catch (error) {
