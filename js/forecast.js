@@ -19,6 +19,7 @@ async function GetForecast() {
 	let endpoint = "https://localhost:7065/WeatherForecast?location=Oslo";
 	let myStr = "";
 	let myObject;
+	var json_forecast = [];
 
 	try {
 		const response = await fetch(endpoint);
@@ -26,7 +27,7 @@ async function GetForecast() {
 			throw new Error(`Response status: ${response.status}`);
 		}
 
-		var json_forecast = await response.json();
+		json_forecast = await response.json();
 		for (let i = 0; i < json_forecast.length; i++) {
 			myStr = myStr + json_forecast[i].summary;
 			myStr = myStr + json_forecast[i].location;	
@@ -42,6 +43,9 @@ async function GetForecast() {
 
 	} catch (error) {
 		alert(error);
+		myObject = new WeatherForecast("2024-08-01", 25, 60, "Fint vær", false, "Canterbury");
+		json_forecast.push(myObject); // add the object to the array
+		CreateGrid(json_forecast);
 	}
 
 	//alert("Today's date is " + d);
