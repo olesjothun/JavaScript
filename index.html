@@ -14,20 +14,38 @@
 			color: blue;
 			background-color: lightblue;
 			padding: 10px;
-			margin: 10px;
+			margin: 0px;
 			border: solid green 2px;
 		}
 		div.selected {
 			border: dashed orange 5px;
 		}
+        .grid {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-gap: 10px;
+            width: 500px;
+        }
+
+        .grid-item {
+            background-color: #e0e0e0;
+            padding: 10px;
+            text-align: left;
+			height: 17px;
+        }
+        .Button {
+            cursor: pointer;
+			
+        }
+
 	</style>
 </head>
 
 <body>
-	
-	<p>This page just demonstrates including a basic JavaScript file. The JavaScript file just tells an alert box to pop up when the page loads.</p>
-	<div onclick="GetForecast()">Trykk meg</div>
-	<p id="test1"> </p>
 
+	<p><h1>This page just demonstrates including a basic JavaScript file. The JavaScript file just tells an alert box to pop up when the page loads.</h1></p>
+	<div id="Div1" class="Button" onclick="GetForecast()" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)">Trykk meg</div>
+	<p id="test1"> </p>
+	<div class="grid" id="myGrid"></div>
 </body>
 </html>

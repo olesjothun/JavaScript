@@ -1,8 +1,12 @@
 body {
     color: #0080ff;
 }
- 
+
 h1 {
-    color: #fff;
+    color: #ff6347;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+/*.Button:hover {
+    border: dashed orange 2px;
+}*/
