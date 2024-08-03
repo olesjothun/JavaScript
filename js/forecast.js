@@ -18,7 +18,6 @@ async function GetForecast() {
 	//let endpoint = "https://localhost:7065/Place";
 	let endpoint = "https://localhost:7065/WeatherForecast?location=Oslo";
 	let myStr = "";
-	let myObject;
 	var json_forecast = [];
 
 	try {
@@ -35,22 +34,26 @@ async function GetForecast() {
 		document.getElementById("test1").innerHTML = myStr;
 		//document.body.innerHTML = JSON.stringify(json_forecast);
 		// console.log(json);
-		myObject = new WeatherForecast("2024-08-01", 25, 60, "Fint vær", false, "Canterbury");
-		json_forecast.push(myObject); // add the object to the array
-		CreateGrid(json_forecast);
-		
+		addObjectAndCreateGrid(json_forecast);
 		
 
 	} catch (error) {
 		alert(error);
-		myObject = new WeatherForecast("2024-08-01", 25, 60, "Fint vær", false, "Canterbury");
-		json_forecast.push(myObject); // add the object to the array
-		CreateGrid(json_forecast);
+		addObjectAndCreateGrid(json_forecast);
 	}
 
 	//alert("Today's date is " + d);
 	//document.body.innerHTML = response;
 	
+}
+
+function addObjectAndCreateGrid(json_forecast)
+{
+	let myObject;
+
+	myObject = new WeatherForecast("2024-08-01", 25, 60, "Fint vær", false, "Canterbury");
+	json_forecast.push(myObject); // add the object to the array
+	CreateGrid(json_forecast);
 }
 
 function CreateGrid(json_data) {
