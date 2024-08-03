@@ -1,6 +1,7 @@
-let ForecastArray;
+let forecastSummaryIDArray = [];
 let d = new Date();
-
+let json_forecast = [];
+let firstTimeGrid = true;
 //alert("Today's date is " + d);
 
 
@@ -14,11 +15,19 @@ function Mouseout(MyButton) {
 	MyButton.style.border = "solid green 2px";
 }
 
+async function buttonClicked() {
+	firstTimeGrid = true;
+	forecastSummaryIDArray = [];
+	const ToggleButton = document.getElementById('myToggleButton');
+	ToggleButton.innerHTML = "Norwegian";
+	await getTranslation('https://localhost:7065/Translation?language=Norwegian');
+	GetForecast();
+}
+
 async function GetForecast() {
 	//let endpoint = "https://localhost:7065/Place";
 	let endpoint = "https://localhost:7065/WeatherForecast?location=Oslo";
-	let myStr = "";
-	var json_forecast = [];
+	
 
 	try {
 		const response = await fetch(endpoint);
@@ -27,11 +36,7 @@ async function GetForecast() {
 		}
 
 		json_forecast = await response.json();
-		for (let i = 0; i < json_forecast.length; i++) {
-			myStr = myStr + json_forecast[i].summary;
-			myStr = myStr + json_forecast[i].location;	
-		}
-		document.getElementById("test1").innerHTML = myStr;
+		
 		//document.body.innerHTML = JSON.stringify(json_forecast);
 		// console.log(json);
 		addObjectAndCreateGrid(json_forecast);
@@ -49,11 +54,15 @@ async function GetForecast() {
 
 function addObjectAndCreateGrid(json_forecast)
 {
-	let myObject;
 
-	myObject = new WeatherForecast("2024-08-01", 25, 60, "Fint vær", false, "Canterbury");
-	json_forecast.push(myObject); // add the object to the array
+	let myObject;
+	if (firstTimeGrid) {
+		myObject = new WeatherForecast("2024-08-01", 25, 60, "Balmy", false, "Canterbury");
+		json_forecast.push(myObject); // add the object to the array
+	}
 	CreateGrid(json_forecast);
+	
+	firstTimeGrid = false;
 }
 
 function CreateGrid(json_data) {
@@ -83,7 +92,12 @@ function CreateGrid(json_data) {
 					}
 					break;
 				case 1: 
-					gridItem.textContent = json_data[i].summary;
+						if (firstTimeGrid)
+							forecastSummaryIDArray.push(json_forecast[i].summary);
+						else
+							json_forecast[i].summary = forecastSummaryIDArray[i];
+						json_forecast[i].summary = translations[json_forecast[i].summary];
+						gridItem.textContent = json_data[i].summary;
 					break;
 				case 2:
 					gridItem.textContent = json_data[i].temperatureC + "°C";					
