@@ -1,3 +1,4 @@
+/*
 document.addEventListener('DOMContentLoaded', function () {
     var toggleButton = document.getElementById('myToggleButton');
 
@@ -18,3 +19,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 });
+*/
+
+
+
+
+async function languageChanged(languageCheckbox){
+    if (checkbox1.checked) {
+        await getTranslation('https://localhost:7065/Translation?language=English');
+    }
+    else {
+        await getTranslation('https://localhost:7065/Translation?language=Norwegian');
+    }
+    addObjectAndCreateGrid(json_forecast);
+}

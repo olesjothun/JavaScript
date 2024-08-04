@@ -18,8 +18,6 @@ function Mouseout(MyButton) {
 async function buttonClicked() {
 	firstTimeGrid = true;
 	forecastSummaryIDArray = [];
-	const ToggleButton = document.getElementById('myToggleButton');
-	ToggleButton.innerHTML = "Norwegian";
 	await getTranslation('https://localhost:7065/Translation?language=Norwegian');
 	GetForecast();
 }
@@ -43,6 +41,7 @@ async function GetForecast() {
 		
 
 	} catch (error) {
+		json_forecast = [];
 		alert(error);
 		addObjectAndCreateGrid(json_forecast);
 	}
@@ -96,7 +95,8 @@ function CreateGrid(json_data) {
 							forecastSummaryIDArray.push(json_forecast[i].summary);
 						else
 							json_forecast[i].summary = forecastSummaryIDArray[i];
-						json_forecast[i].summary = translations[json_forecast[i].summary];
+						if (translations != null)
+							json_forecast[i].summary = translations[json_forecast[i].summary];
 						gridItem.textContent = json_data[i].summary;
 					break;
 				case 2:

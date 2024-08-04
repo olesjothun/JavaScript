@@ -42,15 +42,33 @@
 		.Button {
 			cursor: pointer;
 		}
-	</style>
+		
+
+
+		</style>
+
+
 </head>
 
 <body>
-
 	<p><h1>This page just demonstrates including a basic JavaScript file. The JavaScript file just tells an alert box to pop up when the page loads.</h1></p>
 	<div id="Div1" class="Button" onclick="buttonClicked()" onmouseover="Mouseover(this)" onmouseout="Mouseout(this)">Trykk meg</div>
 	<br>
-	<button id="myToggleButton">Norwegian</button>
+
+	<font size="5" style="vertical-align:6px">
+		Norwegian
+	</font>
+
+
+	<div class="switch" onchange="languageChanged(this)">
+		<input id="checkbox1" class="look" type="checkbox">
+		<label for="checkbox1"></label>
+	</div>
+
+	<font size="5" style="vertical-align:6px">
+		&nbsp; &nbsp;English
+	</font>
+
 	<p id="test1"> </p>
 	<div class="grid" id="myGrid"></div>
 </body>
