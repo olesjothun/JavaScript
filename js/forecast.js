@@ -16,9 +16,14 @@ function Mouseout(MyButton) {
 }
 
 async function buttonClicked() {
+	let languageSelected;
 	firstTimeGrid = true;
 	forecastSummaryIDArray = [];
-	await getTranslation('https://localhost:7065/Translation?language=Norwegian');
+	if (checkbox1.checked)
+		languageSelected = "English";
+	else
+		languageSelected = "Norwegian";
+	await getTranslation(`https://localhost:7065/Translation?language=${languageSelected}`);	
 	GetForecast();
 }
 
