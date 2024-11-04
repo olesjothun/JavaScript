@@ -6,7 +6,7 @@ h1 {
     color: #ff6347;
     font-family: Arial, Helvetica, sans-serif;
 }
-
+/*
 #myToggleButton {
     padding: 10px 20px;
     background-color: #f0f0f0;
@@ -20,11 +20,11 @@ h1 {
         
     }
 
-/* Adding transitions for a smoother visual effect */
+* Adding transitions for a smoother visual effect *
 #myToggleButton {
     transition: background-color 0.3s ease;
 }
-
+*/
 /*.Button:hover {
     border: dashed orange 2px;
 }*/

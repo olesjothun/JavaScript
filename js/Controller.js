@@ -1,0 +1,3 @@
+
+
+showView(myString);
